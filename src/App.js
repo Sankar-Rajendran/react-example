@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from  './App.css';
-import Radium, { StyleRoot } from 'radium';
+// import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 
@@ -130,7 +130,7 @@ class App extends Component {
       // }
     }
     return (
-      <StyleRoot>
+      // <StyleRoot>
         <div className={classes.App}>
           <h1>Hi , First react app</h1>
           <p className={assignedClasses.join(' ')}>This really works..!!!</p>
@@ -139,10 +139,10 @@ class App extends Component {
           {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
           {persons}
         </div>
-      </StyleRoot>
+      // </StyleRoot>
 
     );
   }
 }
 
-export default Radium(App);
+export default App;
