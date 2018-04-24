@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from  './App.css';
 import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
@@ -76,7 +76,7 @@ class App extends Component {
   }
 
   render() {
-    const classes = [];
+    const assignedClasses = [];
 
     const buttonStyle = {
       backgroundColor: 'green',
@@ -122,17 +122,17 @@ class App extends Component {
 
 
       if (this.state.persons.length <= 2) {
-        classes.push('bold');
+        assignedClasses.push(classes.bold);
       }
       if (this.state.persons.length <= 1) {
-        classes.push('red');
+        assignedClasses.push(classes.red);
       }
     }
     return (
       <StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi , First react app</h1>
-          <p className={classes.join(' ')}>This really works..!!!</p>
+          <p className={assignedClasses.join(' ')}>This really works..!!!</p>
           <button key="buttonSwitch" style={buttonStyle} onClick={this.switchNameHandler.bind(this, 'Sankar Rajendran')}>Switch Name</button>
           <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
