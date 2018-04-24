@@ -78,18 +78,20 @@ class App extends Component {
   render() {
     const assignedClasses = [];
 
-    const buttonStyle = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
-    }
+    // const buttonStyle = {
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightgreen',
+    //     color: 'black'
+    //   }
+    // }
+
+    let btnClass = '';
 
     let persons = null;
 
@@ -111,30 +113,29 @@ class App extends Component {
         </div>
       )
 
-      buttonStyle.backgroundColor = 'red';
+      btnClass = classes.red;
 
-      buttonStyle[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      //buttonStyle.backgroundColor = 'red';
 
+      // buttonStyle[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
 
-
-
-      if (this.state.persons.length <= 2) {
-        assignedClasses.push(classes.bold);
-      }
-      if (this.state.persons.length <= 1) {
-        assignedClasses.push(classes.red);
-      }
+      // if (this.state.persons.length <= 2) {
+      //   assignedClasses.push(classes.bold);
+      // }
+      // if (this.state.persons.length <= 1) {
+      //   assignedClasses.push(classes.red);
+      // }
     }
     return (
       <StyleRoot>
         <div className={classes.App}>
           <h1>Hi , First react app</h1>
           <p className={assignedClasses.join(' ')}>This really works..!!!</p>
-          <button key="buttonSwitch" style={buttonStyle} onClick={this.switchNameHandler.bind(this, 'Sankar Rajendran')}>Switch Name</button>
-          <button style={buttonStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          <button key="buttonSwitch" className={btnClass}  onClick={this.switchNameHandler.bind(this, 'Sankar Rajendran')}>Switch Name</button>
+          <button className={btnClass}  onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
           {persons}
         </div>
