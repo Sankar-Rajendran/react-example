@@ -1,9 +1,5 @@
 import React from 'react';
 // import Radium from 'radium';
-
-
-
-
 import classes from  './Person.css'
 
 

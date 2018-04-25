@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 // import Radium, { StyleRoot } from 'radium';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundry'
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit'
+// import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundry';
 
 
 class App extends Component {
@@ -51,7 +52,7 @@ class App extends Component {
 
     // const person = Object.assign({},this.state.persons[index]);
 
-    person.name = event.targe.value;
+    person.name = event.target.value;
 
     const persons = [...this.state.persons];
 
@@ -77,7 +78,7 @@ class App extends Component {
   }
 
   render() {
-    const assignedClasses = [];
+
 
     // const buttonStyle = {
     //   backgroundColor: 'green',
@@ -92,30 +93,19 @@ class App extends Component {
     //   }
     // }
 
-    let btnClass = '';
 
     let persons = null;
 
     if (this.state.showPersons) {
       persons = (
         <div>
-          {
-            this.state.persons.map((person, index) => {
-              return (
-                <ErrorBoundary key={index}>
-                  <Person
-                    changed={(event) => this.nameChagnedHandler(event, index)}
-                    click={this.deletePersonHandler.bind(this, index)}
-                    name={person.name}
-                    age={person.age} />
-                </ErrorBoundary>
-              )
-            })
-          }
+          <Persons persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChagnedHandler}></Persons>
         </div>
-      )
+      );
 
-      btnClass = classes.red;
+
 
       //buttonStyle.backgroundColor = 'red';
 
@@ -124,20 +114,16 @@ class App extends Component {
       //   color: 'black'
       // }
 
-      // if (this.state.persons.length <= 2) {
-      //   assignedClasses.push(classes.bold);
-      // }
-      // if (this.state.persons.length <= 1) {
-      //   assignedClasses.push(classes.red);
-      // }
     }
     return (
       // <StyleRoot>
       <div className={classes.App}>
-        <h1>Hi , First react app</h1>
-        <p className={assignedClasses.join(' ')}>This really works..!!!</p>
-        <button key="buttonSwitch" className={btnClass} onClick={this.switchNameHandler.bind(this, 'Sankar Rajendran')}>Switch Name</button>
-        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        <Cockpit
+          showPersons={this.state.showPersons}
+          toggleClicked={this.togglePersonsHandler}
+          switchNameClicked = {this.switchNameHandler}
+          persons={this.state.persons} />
+        
         {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
         {persons}
       </div>
