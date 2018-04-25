@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import classes from  './App.css';
+import classes from './App.css';
 // import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundry'
 
 
 class App extends Component {
@@ -50,7 +51,7 @@ class App extends Component {
 
     // const person = Object.assign({},this.state.persons[index]);
 
-    person.name = event.target.value;
+    person.name = event.targe.value;
 
     const persons = [...this.state.persons];
 
@@ -101,12 +102,13 @@ class App extends Component {
           {
             this.state.persons.map((person, index) => {
               return (
-                <Person
-                  key={index}
-                  changed={(event) => this.nameChagnedHandler(event, index)}
-                  click={this.deletePersonHandler.bind(this, index)}
-                  name={person.name}
-                  age={person.age} />
+                <ErrorBoundary key={index}>
+                  <Person
+                    changed={(event) => this.nameChagnedHandler(event, index)}
+                    click={this.deletePersonHandler.bind(this, index)}
+                    name={person.name}
+                    age={person.age} />
+                </ErrorBoundary>
               )
             })
           }
@@ -131,14 +133,14 @@ class App extends Component {
     }
     return (
       // <StyleRoot>
-        <div className={classes.App}>
-          <h1>Hi , First react app</h1>
-          <p className={assignedClasses.join(' ')}>This really works..!!!</p>
-          <button key="buttonSwitch" className={btnClass}  onClick={this.switchNameHandler.bind(this, 'Sankar Rajendran')}>Switch Name</button>
-          <button className={btnClass}  onClick={this.togglePersonsHandler}>Toggle Persons</button>
-          {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
-          {persons}
-        </div>
+      <div className={classes.App}>
+        <h1>Hi , First react app</h1>
+        <p className={assignedClasses.join(' ')}>This really works..!!!</p>
+        <button key="buttonSwitch" className={btnClass} onClick={this.switchNameHandler.bind(this, 'Sankar Rajendran')}>Switch Name</button>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
+        {persons}
+      </div>
       // </StyleRoot>
 
     );
