@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import classes from './App.css';
 // import Radium, { StyleRoot } from 'radium';
 import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit'
+import Cockpit from '../components/Cockpit/Cockpit';
 // import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundry';
+
+
+import WithClass from '../hoc/WithClass';
 
 
 class App extends Component {
@@ -117,7 +120,7 @@ class App extends Component {
     }
     return (
       // <StyleRoot>
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <Cockpit
           showPersons={this.state.showPersons}
           toggleClicked={this.togglePersonsHandler}
@@ -126,7 +129,7 @@ class App extends Component {
         
         {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
         {persons}
-      </div>
+      </WithClass>
       // </StyleRoot>
 
     );
