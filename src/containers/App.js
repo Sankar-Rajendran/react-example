@@ -27,7 +27,8 @@ class App extends Component {
       name: 'Vasanth',
       age: 31
     }],
-    showPersons: false
+    showPersons: false,
+    toggleClicked: 0
   }
 
 
@@ -71,7 +72,12 @@ class App extends Component {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({ showPersons: !doesShow });
+    this.setState((prevState, props) => {
+      return {
+        showPersons: !doesShow,
+        toggleClicked: prevState.toggleClicked + 1
+      }
+    });
   }
 
 
