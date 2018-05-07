@@ -2,7 +2,7 @@ import React from 'react';
 // import Radium from 'radium';
 import classes from  './Person.css'
 
-import WithClass from '../../../hoc/WithClass'
+import WithClass from '../../../hoc/WithClass_Component'
 
 
 const person = (props) => {

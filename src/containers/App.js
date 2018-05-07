@@ -6,7 +6,10 @@ import Cockpit from '../components/Cockpit/Cockpit';
 // import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundry';
 
 
-import WithClass from '../hoc/WithClass';
+// import WithClass from '../hoc/WithClass';
+
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 
 
 class App extends Component {
@@ -120,20 +123,22 @@ class App extends Component {
     }
     return (
       // <StyleRoot>
-      <WithClass classes={classes.App}>
+      // <WithClass classes={classes.App}>
+      <Aux>
         <Cockpit
           showPersons={this.state.showPersons}
           toggleClicked={this.togglePersonsHandler}
-          switchNameClicked = {this.switchNameHandler}
+          switchNameClicked={this.switchNameHandler}
           persons={this.state.persons} />
-        
+
         {/* click={()=>this.switchNameHandler('First Person')} this is not efficient */}
         {persons}
-      </WithClass>
+      </Aux>
+      // </WithClass>
       // </StyleRoot>
 
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
